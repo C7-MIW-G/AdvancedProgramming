@@ -9,13 +9,16 @@ public class SimpeleRecursie {
 
     public static void main(String[] args) {
 
-        for (int i = 0; i < 100; i++) {
-            System.out.printf("%3d! = %d\n", i, faculteit(i));
-        }
+//        for (int i = 0; i < 100; i++) {
+//            System.out.printf("%3d! = %d\n", i, faculteit(i));
+//        }
+//
+//        int[] eenArray = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+//        System.out.println(somVanArray(eenArray));
+//        System.out.println(somVanArray(eenArray, 2));
 
-        int[] eenArray = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-        System.out.println(somVanArray(eenArray));
-        System.out.println(somVanArray(eenArray, 2));
+        telOp(Integer.MAX_VALUE);
+        System.out.println();
     }
 
     public static int somVanArray(int[] array) {
@@ -37,9 +40,9 @@ public class SimpeleRecursie {
     }
 
     public static int telOp(int aantalGetallen) {
-        if (aantalGetallen <= 0) {
-            return 0;
-        }
+//        if (aantalGetallen <= 0) {
+//            return 0;
+//        }
 
         return aantalGetallen + telOp(aantalGetallen - 1);
     }

@@ -8,13 +8,13 @@ package recursie;
 public class Fibonacci {
 
     public static void main(String[] args) {
-        int fibVan = 20;
+        int fibVan = 50;
 
         long startTijd = System.nanoTime();
         System.out.println(fibonacciIteratief(fibVan));
         System.out.println("verwerkingstijd = " + (System.nanoTime() - startTijd));
         startTijd = System.nanoTime();
-        System.out.println(fibonacciRecursief(fibVan));
+        System.out.println(fibonacciRecursiefOptimaal(fibVan));
         System.out.println("verwerkingstijd = " + (System.nanoTime() - startTijd));
     }
 
@@ -30,15 +30,31 @@ public class Fibonacci {
     }
 
     public static int fibonacciIteratief(int index) {
-        int[] fibonnaciReeks = new int[index + 1];
-        fibonnaciReeks[0] = 1;
-        fibonnaciReeks[1] = 1;
+        int[] fibonacciReeks = new int[index + 1];
+        fibonacciReeks[0] = 1;
+        fibonacciReeks[1] = 1;
 
         for (int i = 2; i < index + 1; i++) {
-            fibonnaciReeks[i] = fibonnaciReeks[i-1] + fibonnaciReeks[i-2];
+            fibonacciReeks[i] = fibonacciReeks[i-1] + fibonacciReeks[i-2];
         }
 
-        return fibonnaciReeks[index];
+        return fibonacciReeks[index];
+    }
+
+    public static long fibonacciRecursiefOptimaal(int index) {
+        long[] fibonacciReeks = new long[index + 1];
+        fibonacciRecursiefOptimaal(index, fibonacciReeks);
+        return fibonacciReeks[index];
+    }
+
+    private static void fibonacciRecursiefOptimaal(int index, long[] fibonacciReeks) {
+        if (index <= 1) {
+            // aanname, de eerste twee plekken zijn geïnitialiseerd
+            fibonacciReeks[index] = 1;
+            return;
+        }
+        fibonacciRecursiefOptimaal(index - 1, fibonacciReeks);
+        fibonacciReeks[index] = fibonacciReeks[index - 2] + fibonacciReeks[index - 1];
     }
 
 }

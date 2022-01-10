@@ -24,11 +24,13 @@ public class Machtsverheffen {
     }
 
     public static int totDeMachtRecursief(int basis, int macht) {
-        if (macht <= 0) {
+        if (macht == 0) {
             return 1;
+        } else if (macht > 0) {
+            return basis * totDeMachtRecursief(basis, macht - 1);
+        } else {
+            return totDeMachtRecursief(basis, macht + 1) / basis;
         }
-
-        return basis * totDeMachtRecursief(basis, macht - 1);
     }
 
 }
